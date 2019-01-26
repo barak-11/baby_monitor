@@ -153,8 +153,9 @@ try:
         output = StreamingOutput()
                 
         dt=datetime.now()
-        dtTemp = dt.strftime('%d-%b-%Y - %H-%M-%S')
+        dtTemp = dt.strftime('%Y-%m-%d - %H-%M-%S')
         filename = '/home/pi/baby_lapse/%s.jpg' % dtTemp
+        #camera.rotation = 180
         camera.capture(filename, resize=(640, 480))
             #camera.resolution=(1080,720)
         camera.start_recording(output, format='mjpeg')
