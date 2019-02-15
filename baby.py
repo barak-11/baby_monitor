@@ -73,10 +73,12 @@ PAGEnew ="""\
     </div>
   </div>
     <div class="row text-center">
-      <div class="col-sm-12">
+      <div class="col"></div>
+      <div class="col">
           <div id="worked">00:00</div>
-            <img src="stream.mjpeg" class="img-responsive" alt="sumsum"  width="640" height="480">
+            <img src="stream.mjpeg" class="img-responsive" alt="sumsum" >
       </div>
+      <div class="col"></div>
   </div>
 </div>
 
