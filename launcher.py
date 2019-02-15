@@ -77,13 +77,13 @@ def checkDarkice():
             if "password" not in response.text:
                 print("darkice is down")
                 green.off()
-                #dt=datetime.now()
-                #dtTemp = dt.strftime('%d-%b-%Y - %H-%M-%S')
-                #file_name = "reboot_baby_pi.txt"
-                #new_string = "rebooting" % dtTemp
-                #opened_file = open(file_name, 'a')
-                #opened_file.write("%r\n" %new_string)
-                # opened_file.close()
+                dt=datetime.now()
+                dtTemp = dt.strftime('%d-%b-%Y - %H-%M-%S')
+                file_name = "reboot_baby_pi.txt"
+                new_string = "rebooting %s" % dtTemp
+                opened_file = open(file_name, 'a')
+                opened_file.write("%r\n" %new_string)
+                opened_file.close()
                 r = requests.get('http://10.100.102.30:6000/reboot')
             else:
                 print("darkice is up")
