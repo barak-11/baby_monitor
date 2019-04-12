@@ -25,7 +25,18 @@ PAGEnew ="""\
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+  <script>
+function getStats() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://10.100.102.30:7000/stats", true);
+  xhttp.send();
+}
+</script>
   <script>
     $(document).ready(function(){
         setInterval(function(){ location.reload(); }, 60000);
@@ -57,23 +68,11 @@ PAGEnew ="""\
 <body>
 
 <div class="container">
-<h1 class="text-center">Yair Schieber</h1>
-  <div class="row text-center">
-     <div class="col-sm-4">
-      <h3>Time</h3>
-      <p>%s</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Temperature</h3>
-      <p>%s</p>
-    </div>
-    <div class="col-sm-4">
-      <h3>Humidity</h3>
-      <p>%s</p>
-    </div>
-  </div>
     <div class="row text-center">
-      <div class="col"></div>
+      <div class="col">
+       <button type="button" onclick="getStats()">Request data</button>
+       <p id="demo"></p>
+      </div>
       <div class="col">
           <div id="worked">00:00</div>
             <img src="stream.mjpeg" class="img-responsive" alt="sumsum" >
@@ -85,7 +84,7 @@ PAGEnew ="""\
 </body>
 </html>
 
-""" %(datetimestr,temperature,humidity)
+"""
 
 
 class StreamingOutput(object):
